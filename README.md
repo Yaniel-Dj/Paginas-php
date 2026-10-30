@@ -3,6 +3,7 @@
 ![PHP](https://img.shields.io/badge/PHP-8.x-blue)
 ![AzerothCore](https://img.shields.io/badge/AzerothCore-3.3.5a-green)
 ![Laragon](https://img.shields.io/badge/Laragon-6.x-purple)
+![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Sin frameworks](https://img.shields.io/badge/frameworks-ninguno-lightgrey)
 
 Repositorio personal donde voy subiendo **mis aportes en PHP puro** para servidores **AzerothCore** (World of Warcraft 3.3.5a).
@@ -166,6 +167,8 @@ La estructura es **sencilla a propósito**:
 
 ```
 /
+├── LICENSE                  # Texto completo de la licencia GPL-3.0
+├── README.md
 ├── config.php               # Configuración común (host, user, pass, BDs)
 ├── register.php             # Registro con SRP6
 ├── login.php                # Login de cuenta
@@ -173,7 +176,6 @@ La estructura es **sencilla a propósito**:
 ├── online.php               # Jugadores online
 ├── ranking.php              # Rankings
 ├── ...
-└── README.md
 ```
 
 - Todo vive **en la raíz** (o casi). Sin subcarpetas complicadas.
@@ -260,7 +262,24 @@ En este repo subo `config.php` con valores de ejemplo (los de Laragon). Si lo us
 
 ## 📜 Licencia
 
-Lo que subo aquí es **libre** para usar, modificar y compartir. Puedes considerarlo **MIT** o simplemente "haz con ello lo que quieras". Si te sirve, ¡genial! 🎉
+Este repositorio está bajo la **GNU General Public License v3.0 (GPL-3.0)**.
+
+Esto significa que puedes:
+
+- ✅ **Usar** estas páginas en tu servidor AzerothCore (público o privado).
+- ✅ **Modificar** el código a tu gusto.
+- ✅ **Redistribuir** copias originales o modificadas.
+
+Siempre que:
+
+- 📌 **Mantengas la misma licencia GPL-3.0** en las versiones modificadas.
+- 📌 **Compartas el código fuente** si redistribuyes.
+- 📌 **Mantengas el aviso de copyright** original.
+- 📌 **No me hagas responsable** si algo se rompe (la licencia incluye cláusula de "sin garantía").
+
+> 🧠 **En cristiano**: usa, modifica y comparte estas páginas libremente. Pero si las mejoras y las publicas, hazlo también bajo GPL-3.0 para que todos podamos beneficiarnos. Es el mismo espíritu que usa [AzerothCore](https://github.com/azerothcore/azerothcore-wotlk) con su licencia AGPL.
+
+Consulta el archivo [LICENSE](LICENSE) para el texto legal completo.
 
 ---
 
