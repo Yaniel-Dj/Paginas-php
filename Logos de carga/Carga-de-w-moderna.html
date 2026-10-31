@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando...</title>
+    
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            /* Fondo oscuro para que resalte el logo */
+            background-color: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+        }
+
+        /* ==================================================== */
+        /* ===== PANTALLA DE CARGA ===== */
+        /* ==================================================== */
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        /* Clase para ocultar el logo suavemente */
+        #loading-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .w-logo {
+            width: 130px;
+            height: 130px;
+            overflow: visible;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.15));
+            animation: flotar-logo 3s ease-in-out infinite alternate;
+        }
+
+        .ring-outer {
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            stroke-dasharray: 25 15; 
+            opacity: 0.4;
+            animation: girar-derecha 10s linear infinite;
+            transform-origin: center;
+        }
+
+        .ring-inner {
+            fill: none;
+            stroke: #888888;
+            stroke-width: 1;
+            stroke-dasharray: 10 20; 
+            opacity: 0.3;
+            animation: girar-izquierda 6s linear infinite;
+            transform-origin: center;
+        }
+
+        .center-gem {
+            fill: #ffffff;
+            opacity: 0.8;
+            animation: latir-gema 1.5s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+
+        .stick {
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 7;
+            stroke-linecap: square; 
+            stroke-linejoin: miter;
+            animation: onda-palitos 2.2s ease-in-out infinite;
+        }
+
+        .stick:nth-child(4) { animation-delay: 0s; }
+        .stick:nth-child(5) { animation-delay: 0.2s; }
+        .stick:nth-child(6) { animation-delay: 0.4s; }
+        .stick:nth-child(7) { animation-delay: 0.6s; }
+
+        .loading-text-svg {
+            width: 180px;
+            height: 30px;
+            margin-top: 15px;
+            overflow: visible;
+        }
+
+        .stick-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 5px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            stroke-linecap: square;
+            stroke-linejoin: miter;
+            stroke-dasharray: 3 3;
+            animation: brillo-texto-palitos 2s linear infinite;
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes flotar-logo {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-8px); }
+        }
+
+        @keyframes girar-derecha {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes girar-izquierda {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
+
+        @keyframes latir-gema {
+            0% { transform: scale(0.8) rotate(45deg); opacity: 0.5; filter: drop-shadow(0 0 2px #fff); }
+            100% { transform: scale(1.2) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 10px #fff); }
+        }
+
+        @keyframes onda-palitos {
+            0%, 100% { stroke-width: 5; opacity: 0.3; filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0)); }
+            50% { stroke-width: 8; opacity: 1; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)); }
+        }
+
+        @keyframes brillo-texto-palitos {
+            0% { stroke-dashoffset: 0; opacity: 0.4; }
+            50% { opacity: 1; filter: drop-shadow(0 0 4px #fff); }
+            100% { stroke-dashoffset: -12; opacity: 0.4; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PANTALLA DE CARGA -->
+    <div id="loading-screen" role="status" aria-label="Cargando">
+        
+        <!-- Logo W -->
+        <svg class="w-logo" viewBox="0 0 100 100">
+            <circle class="ring-outer" cx="50" cy="50" r="46" />
+            <circle class="ring-inner" cx="50" cy="50" r="38" />
+            <rect class="center-gem" x="46" y="46" width="8" height="8" rx="1" />
+            <path class="stick" d="M 25 25 L 38 75" />
+            <path class="stick" d="M 38 75 L 50 45" />
+            <path class="stick" d="M 50 45 L 62 75" />
+            <path class="stick" d="M 62 75 L 75 25" />
+        </svg>
+        
+        <!-- Texto CARGANDO -->
+        <svg class="loading-text-svg" viewBox="0 0 200 30">
+            <text x="100" y="20" text-anchor="middle" class="stick-text">CARGANDO</text>
+        </svg>
+
+    </div>
+
+    <!-- SCRIPT PARA SIMULAR QUE TERMINA DE CARGAR -->
+    <script>
+        // Si quieres que la animación se quede para siempre, borra o comenta este bloque
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                const loader = document.getElementById("loading-screen");
+                if (loader) {
+                    loader.classList.add("hide");
+                }
+            }, 3500); // 3.5 segundos
+        });
+    </script>
+
+</body>
+</html>
